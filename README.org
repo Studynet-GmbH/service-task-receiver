@@ -1,0 +1,10 @@
+* Service Task Receiver
+
+This package helps reduce boilerplate when implementing microservices that process tasks from a messaging queue. Provides a framework for task handling and dependency management.
+
+** Getting started
+Clone the repository and run =npm install=. 
+
+** Running tests
+The package.json includes scripts to run all tests. Just run =npm test=!
+
