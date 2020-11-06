@@ -1,9 +1,11 @@
 {
     "name": "@studybear/service-task-receiver",
-    "version": "1.0.0",
+    "version": "2.6.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
-    "files": ["dist/**/*"],
+    "files": [
+        "dist/**/*"
+    ],
     "mocha": {
         "timeout": 0
     },
