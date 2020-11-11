@@ -1,6 +1,6 @@
 {
     "name": "@studybear/service-task-receiver",
-    "version": "2.6.0",
+    "version": "2.6.6",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "files": [

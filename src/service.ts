@@ -2,19 +2,21 @@ import sleep from "sleep-promise"
 
 export type Dependency<D> = () => D | null | Promise<D>
 
-export abstract class TaskReceiver<D> {
+export abstract class TaskReceiver<D = unknown> {
   abstract dependencyInitialization: Record<string, Dependency<D>>
-  dependencies: Record<string, D>
-  running: boolean
+  dependencies: Record<string, D> = {}
+  running: boolean = true
 
   async start() {
-    this.initDependencies()
+    this.running = true
+
+    await this.initDependencies()
     while (this.running) {
       try {
         const task: any = await this.getTask()
 
         if (!task) {
-          sleep(1000)
+          await sleep(1000)
           continue
         }
 
@@ -35,6 +37,8 @@ export abstract class TaskReceiver<D> {
   abstract async handleTask(task: any): Promise<void>
 
   private async initDependencies() {
+    this.dependencies = {}
+
     for (let key in this.dependencyInitialization) {
       let dep: any | undefined
       const f: Dependency<D> = this.dependencyInitialization[key]
